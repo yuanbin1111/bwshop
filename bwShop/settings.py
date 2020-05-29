@@ -35,9 +35,11 @@ INSTALLED_APPS = [
     'user_operation',
     'xadmin',
     'rest_framework',
+    'coreschema',
     'crispy_forms',
     'django_filters',
-    'DjangoUeditor'
+    'DjangoUeditor',
+
 
 ]
 
@@ -50,10 +52,13 @@ REST_FRAMEWORK = {
 #重载系统的用户，让UserProfile生效
 AUTH_USER_MODEL = 'users.UserProfile'
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
