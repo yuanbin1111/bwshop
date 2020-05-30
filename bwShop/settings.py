@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'user_operation',
     'xadmin',
     'rest_framework',
+    'rest_framework.authtoken',
     'coreschema',
     'crispy_forms',
     'django_filters',
@@ -44,10 +45,32 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE':10,
-    'DEFAULT_SCHEMA_CLASS':'rest_framework.schemas.AutoSchema'
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    # 'PAGE_SIZE':10,
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    )
 }
+
+import datetime
+#有效期限
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
+}
+
+APPEND_SLASH=False
+# 手机号码正则表达式
+REGEX_MOBILE = "^1[358]\d{9}$|^147\d{8}$|^176\d{8}$"
+# 云片网 api_key
+APIKEY = 'e5246409f7a018487b0e276b8406eaf5'
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+)
 
 #重载系统的用户，让UserProfile生效
 AUTH_USER_MODEL = 'users.UserProfile'
