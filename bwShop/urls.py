@@ -10,7 +10,8 @@ from rest_framework.authtoken import views
 from rest_framework_jwt.views import obtain_jwt_token
 
 from bwShop.settings import MEDIA_ROOT
-from goods.views import GoodsListViewSet,CategoryViewSet
+from goods.views import GoodsListViewSet,CategoryViewSet, BannerViewset, IndexCategoryViewset
+from user_operation.views import UserFavViewset, LeavingMessageViewset, AddressViewset
 from users.views import SmsCodeViewset,UserViewset
 
 router = routers.DefaultRouter()
@@ -18,6 +19,8 @@ router.register('goods',GoodsListViewSet)
 router.register('categorys',CategoryViewSet,basename='categorys')
 router.register('code',SmsCodeViewset,basename='code')
 router.register('users',UserViewset,basename='users')
+router.register('userfavs',UserFavViewset,basename='userfavs')
+router.register('messages',LeavingMessageViewset,basename='messages')
 
 
 schema_view = get_schema_view(title='corejson')
