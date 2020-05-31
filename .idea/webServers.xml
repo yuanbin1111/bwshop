@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="48da9d96-b626-4d57-8e84-dad6a11eb4fb" name="bw_shop" url="http://47.105.158.240">
+        <fileTransfer rootFolder="/opt" accessType="SFTP" host="47.105.158.240" port="22" sshConfigId="db92b14a-fed8-44ed-b16f-4a21e2f78128" sshConfig="root@47.105.158.240:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" muteSftpMessages="true" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
